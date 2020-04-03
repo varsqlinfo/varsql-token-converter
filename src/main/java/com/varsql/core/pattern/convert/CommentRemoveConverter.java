@@ -20,7 +20,7 @@ import com.varsql.core.pattern.parsing.function.EndDelimiterFunction;
  */
 public class CommentRemoveConverter extends AbstractConverter {
 	// comment type
-	static enum CommentType {
+	public static enum CommentType {
 		JAVA, JSP, JAVASCRIPT, CSS, HTML, XML, PROPERTY;
 	}
 

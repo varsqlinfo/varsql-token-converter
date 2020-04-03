@@ -19,7 +19,7 @@ import com.varsql.core.pattern.parsing.function.EndDelimiterFunction;
 *-----------------------------------------------------------------------------
  */
 public class SQLCommentRemoveConverter extends AbstractConverter {
-	public enum DBType {
+	public static enum DBType {
 		MYSQL("mysql" )
 		,DB2("db2")
 		,ORACLE("oracle")
