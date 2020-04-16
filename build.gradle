@@ -43,7 +43,7 @@ def def_version = [
 dependencies {
    //junit
 	testImplementation(
-		 [ group: 'org.junit.jupiter' , name: 'junit-jupiter' , version: def_version.junit ]
+		 [ group: 'org.junit.jupiter' , name: 'junit-jupiter-api' , version: def_version.junit ]
 		,[ group: 'org.junit.jupiter' , name: 'junit-jupiter-engine' , version: def_version.junit ]
 		,[ group: 'org.junit.jupiter' , name: 'junit-jupiter-params' , version: def_version.junit ]
 		,[ group: 'org.junit.vintage' , name: 'junit-vintage-engine' , version: def_version.junit ]
