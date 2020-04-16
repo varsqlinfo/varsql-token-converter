@@ -11,7 +11,7 @@ import com.varsql.core.test.BaseTest;
 public class SQLCommentRemoveConvertTest extends BaseTest{
 	
 	private boolean allLogView = false; 
-	DBType logViewType = null;//CommentRemoveUtil.CommentType.JAVASCRIPT;
+	DBType logViewType = null;//DBType.ORACLE;
 	@Test
 	public void testORACLE() {
 		String cont = getResourceContent("/comment/sql/oracle.txt");

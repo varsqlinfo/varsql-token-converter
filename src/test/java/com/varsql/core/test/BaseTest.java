@@ -15,7 +15,7 @@ public class BaseTest {
             String line = null;
             
             while ((line = br.readLine()) != null) {
-                sb.append(line);
+                sb.append(line).append(System.lineSeparator());
             }
         } catch (IOException ioe) {
             System.out.println(ioe.getMessage());
