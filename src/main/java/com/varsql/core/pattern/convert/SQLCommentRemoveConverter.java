@@ -86,27 +86,32 @@ public class SQLCommentRemoveConverter extends AbstractConverter {
 	}
 
 	public String convert(String cont, DBType type, boolean emptyLineRemove) {
-		String result = "";
+		ConvertResult convertResult=null;
+		
+		
 		switch (type) {
 		case ORACLE:
-			result = transform(cont, DOUBLEQUOTE, SINGLEQUOTE, HINT_ORACLE2, LINE, HINT_ORACLE, BLOCK);
+			convertResult = transform(cont, DOUBLEQUOTE, SINGLEQUOTE, HINT_ORACLE2, LINE, HINT_ORACLE, BLOCK);
 			break;
 
 		case MYSQL:
-			result = transform(cont, DOUBLEQUOTE, SINGLEQUOTE, LINE_MYSQL_IGNORE, LINE_MYSQL, BLOCK);
+			convertResult = transform(cont, DOUBLEQUOTE, SINGLEQUOTE, LINE_MYSQL_IGNORE, LINE_MYSQL, BLOCK);
 			break;
 
 		case MARIADB:
-			result = transform(cont, DOUBLEQUOTE, SINGLEQUOTE, LINE, LINE_MYSQL_IGNORE, LINE_MYSQL, BLOCK);
+			convertResult = transform(cont, DOUBLEQUOTE, SINGLEQUOTE, LINE, LINE_MYSQL_IGNORE, LINE_MYSQL, BLOCK);
 			break;
 
 		case SYBASE:
-			result = transform(cont, DOUBLEQUOTE, SINGLEQUOTE, LINE, LINE_SYBASE, BLOCK);
+			convertResult = transform(cont, DOUBLEQUOTE, SINGLEQUOTE, LINE, LINE_SYBASE, BLOCK);
 			break;
 		default:
-			result = transform(cont, DOUBLEQUOTE, SINGLEQUOTE, LINE, BLOCK);
+			convertResult = transform(cont, DOUBLEQUOTE, SINGLEQUOTE, LINE, BLOCK);
 			break;
 		}
+		
+		String result=convertResult.getCont();
+		
 		if (emptyLineRemove) {
 			return StringRegularUtils.removeBlank(result); // blank line remove
 		}
