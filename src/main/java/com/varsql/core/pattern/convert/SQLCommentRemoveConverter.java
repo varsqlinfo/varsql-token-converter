@@ -72,7 +72,7 @@ public class SQLCommentRemoveConverter extends AbstractConverter {
 	final static TokenInfo LINE_MYSQL_IGNORE = new TokenInfo.Builder("\\#", null, (val) -> "\\#").build();
 
 	final static TokenInfo LINE_MYSQL = new TokenInfo.Builder("#", NEW_LINE_ARR).setValueReturn(false).setEndDelimiterFunction(newLineEndDelFn).build();
-	
+
 	final static TokenInfo HINT_ORACLE = new TokenInfo.Builder("/*+", new String[] { "*/" }, (val) -> {
 		return "/*+" + val + "*/";
 	}).setValueReturn(true).build();
@@ -90,27 +90,32 @@ public class SQLCommentRemoveConverter extends AbstractConverter {
 	}
 
 	public String convert(String cont, DBType type, boolean emptyLineRemove) {
-		String result = "";
+		ConvertResult convertResult=null;
+		
+		
 		switch (type) {
 		case ORACLE:
-			result = transform(cont, DOUBLEQUOTE, SINGLEQUOTE, HINT_ORACLE2, LINE, HINT_ORACLE, BLOCK);
+			convertResult = transform(cont, DOUBLEQUOTE, SINGLEQUOTE, HINT_ORACLE2, LINE, HINT_ORACLE, BLOCK);
 			break;
 
 		case MYSQL:
-			result = transform(cont, DOUBLEQUOTE, SINGLEQUOTE, MYBATIS_PARAM_IGNORE, MYBATIS_PARAM_IGNORE2, LINE_MYSQL_IGNORE, LINE_MYSQL, BLOCK);
+			convertResult = transform(cont, DOUBLEQUOTE, SINGLEQUOTE, MYBATIS_PARAM_IGNORE, MYBATIS_PARAM_IGNORE2, LINE_MYSQL_IGNORE, LINE_MYSQL, BLOCK);
 			break;
 
 		case MARIADB:
-			result = transform(cont, DOUBLEQUOTE, SINGLEQUOTE, LINE, MYBATIS_PARAM_IGNORE, MYBATIS_PARAM_IGNORE2, LINE_MYSQL_IGNORE, LINE_MYSQL, BLOCK);
+			convertResult = transform(cont, DOUBLEQUOTE, SINGLEQUOTE, LINE, MYBATIS_PARAM_IGNORE, MYBATIS_PARAM_IGNORE2, LINE_MYSQL_IGNORE, LINE_MYSQL, BLOCK);
 			break;
 
 		case SYBASE:
-			result = transform(cont, DOUBLEQUOTE, SINGLEQUOTE, LINE, LINE_SYBASE, BLOCK);
+			convertResult = transform(cont, DOUBLEQUOTE, SINGLEQUOTE, LINE, LINE_SYBASE, BLOCK);
 			break;
 		default:
-			result = transform(cont, DOUBLEQUOTE, SINGLEQUOTE, LINE, BLOCK);
+			convertResult = transform(cont, DOUBLEQUOTE, SINGLEQUOTE, LINE, BLOCK);
 			break;
 		}
+		
+		String result=convertResult.getCont();
+		
 		if (emptyLineRemove) {
 			return StringRegularUtils.removeBlank(result); // blank line remove
 		}
