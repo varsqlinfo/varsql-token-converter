@@ -1,0 +1,39 @@
+<div class="form-group" :class="errors.has('NAME') ? 'has-error' :''">
+							<label class="col-sm-4 control-label"><spring:message code="admin.form.db.vname" /></label>
+							<div class="col-sm-8">
+								<input type="text" v-model="detailItem.vname" v-validate="'required'" name="NAME" class="form-control" />
+								<div v-if="errors.has('NAME')" class="help-block">{{ errors.first('NAME') }}</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-4 control-label"><spring:message code="admin.form.db.vtype" /></label>
+							<div class="col-sm-8">
+								<select class="form-control text required" v-model="detailItem.VTYPE" @change="dbDriverLoad(detailItem.VTYPE)">
+									<c:forEach items="${dbtype}" var="tmpInfo" varStatus="status">
+										<option value="${tmpInfo.urlprefix}" i18n="${tmpInfo.langkey}">${tmpInfo.name}</option>
+									</c:forEach>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-4 control-label"></label>
+							<div class="col-sm-8">
+								<input type="checkbox" v-model="detailItem.URL_DIRECT_YN" true-value="Y" false-value="N" /><spring:message code="admin.form.db.urldirectmsg" />
+							</div>
+						</div>
+						<div v-if="detailItem.URL_DIRECT_YN!='Y'">
+							<div class="form-group" :class="errors.has('SERVERIP') ? 'has-error' :''">
+								<label class="col-sm-4 control-label"><spring:message code="admin.form.db.serverip" /></label>
+								<div class="col-sm-8">
+									<input type="text" v-model="detailItem.VSERVERIP" v-validate="'required'" name="SERVERIP" class="form-control" />
+									<div v-if="errors.has('SERVERIP')" class="help-block">{{ errors.first('SERVERIP') }}</div>
+								</div>
+							</div>
+							<div class="form-group" :class="errors.has('PORT') ? 'has-error' :''">
+								<label class="col-sm-4 control-label"><spring:message code="admin.form.db.port" /></label>
+								<div class="col-sm-8">
+									<input type="number" v-model="detailItem.VPORT" name="PORT" class="form-control" />
+									<div v-if="errors.has('PORT')" class="help-block">{{ errors.first('PORT') }}</div>
+								</div>
+							</div>
+						</div>
