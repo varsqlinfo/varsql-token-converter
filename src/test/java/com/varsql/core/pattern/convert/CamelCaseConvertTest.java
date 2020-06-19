@@ -53,7 +53,7 @@ public class CamelCaseConvertTest extends AbstractConverter {
 	final static TokenInfo PARAM1 = new TokenInfo.Builder("{{", new String[] { "}}" }).build();
 	final static TokenInfo PARAM2 = new TokenInfo.Builder("v-model=\"", new String[] { "\"" }).build();
 	
-	public String sqlParameter(String cont) {
+	public ConvertResult sqlParameter(String cont) {
 
 		return super.transform(cont, new TokenHandler() {
 			@Override
