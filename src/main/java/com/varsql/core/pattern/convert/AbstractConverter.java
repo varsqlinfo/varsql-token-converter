@@ -171,9 +171,12 @@ public abstract class AbstractConverter implements Converter {
 
 				TokenIndexInfo tokenDelimiterFindInfo = parser.findEndDelimiterIndex(statePattern, cont, startIdx);
 
-				int suffixIdx = tokenDelimiterFindInfo == null ? -1 : tokenDelimiterFindInfo.getIdx();
+				if(tokenDelimiterFindInfo == null) {
+					dest.append(cont.substring(startIdx - statePattern.getStartDelimiterLen(), startIdx));
+					states.pop();
+				}else {
+					int suffixIdx = tokenDelimiterFindInfo.getIdx();
 
-				if (suffixIdx > -1) {
 					index = suffixIdx + tokenDelimiterFindInfo.getDelimiterLength()	- (tokenDelimiterFindInfo.getDelimiterLength() > 0 ? 1 : 0);
 
 					String val = getHandlerValue(handler, statePattern, cont.substring(startIdx, suffixIdx));
@@ -183,9 +186,6 @@ public abstract class AbstractConverter implements Converter {
 					if (statePattern.isValueReturn()) {
 						result.add(val);
 					}
-					states.pop();
-				} else {
-					dest.append(cont.substring(startIdx - statePattern.getStartDelimiterLen(), startIdx));
 					states.pop();
 				}
 			}

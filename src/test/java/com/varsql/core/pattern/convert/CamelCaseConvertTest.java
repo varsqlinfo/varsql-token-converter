@@ -54,8 +54,8 @@ public class CamelCaseConvertTest extends AbstractConverter {
 	final static TokenInfo PARAM2 = new TokenInfo.Builder("v-model=\"", new String[] { "\"" }).build();
 	
 	public ConvertResult sqlParameter(String cont) {
-
-		return super.transform(cont, new TokenHandler() {
+		return super.tokenData(cont, new TokenHandler() {
+			
 			@Override
 			public String beforeHandleToken(String str, TokenInfo converter) {
 				
@@ -110,7 +110,7 @@ public class CamelCaseConvertTest extends AbstractConverter {
 	public void testMain() {
 		CamelCaseConvertTest ccc = new CamelCaseConvertTest();
 		
-		System.out.println(ccc.sqlParameter(getResourceContent("/txt/camelCase.txt")));
+		System.out.println(ccc.sqlParameter(getResourceContent("/txt/camelCase.txt")).getParameterInfo());
 	}
 	
 	public String getResourceContent(String filePath) {
