@@ -3,12 +3,16 @@ package com.varsql.core.pattern.convert;
 import java.util.List;
 
 /**
- * 
- * @FileName  : ConvertResult.java
- * @프로그램 설명 : ConvertResult
- * @Date      : 2017. 10. 31. 
- * @작성자      : ytkim
- * @변경이력 :
+ * -----------------------------------------------------------------------------
+* @fileName : ConvertResult.java
+* @desc		:  ConvertResult
+* @author	: ytkim
+*-----------------------------------------------------------------------------
+  DATE			AUTHOR			DESCRIPTION
+*-----------------------------------------------------------------------------
+*2017. 10. 31. 		ytkim			최초작성
+
+*-----------------------------------------------------------------------------
  */
 public class ConvertResult{
 	

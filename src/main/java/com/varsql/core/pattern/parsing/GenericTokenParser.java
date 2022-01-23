@@ -28,12 +28,10 @@ public class GenericTokenParser implements TokenParser {
 	}
 
 	/**
-	 * 
-	 * @Method Name  : isStartDelimiter
-	 * @Method 설명 : start delimiter check 
-	 * @작성자   : ytkim
-	 * @작성일   : 2020. 3. 24. 
-	 * @변경이력  :
+	 * @method  : isStartDelimiter
+	 * @desc : start delimiter check 
+	 * @author   : ytkim
+	 * @date   : 2022. 1. 23. 
 	 * @param tokenInfo
 	 * @param cont
 	 * @param startIndex
@@ -58,12 +56,10 @@ public class GenericTokenParser implements TokenParser {
 	}
 
 	/**
-	 * 
-	 * @Method Name  : findEndDelimiterIndex
-	 * @Method 설명 : find end delimiter 
-	 * @작성자   : ytkim
-	 * @작성일   : 2020. 3. 24. 
-	 * @변경이력  :
+	 * @method  : findEndDelimiterIndex
+	 * @desc : find end delimiter
+	 * @author   : ytkim
+	 * @date   : 2022. 1. 23. 
 	 * @param tokenInfo
 	 * @param cont
 	 * @param startIndex

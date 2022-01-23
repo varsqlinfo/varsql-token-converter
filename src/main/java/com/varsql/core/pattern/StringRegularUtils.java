@@ -1,16 +1,14 @@
 package com.varsql.core.pattern;
 
 /**
- * 
-*-----------------------------------------------------------------------------
-* @PROJECT	: varsql
-* @NAME		: StringRegularUtils.java
-* @DESC		: string regular expression 
-* @AUTHOR	: ytkim
+ * -----------------------------------------------------------------------------
+* @fileName : StringRegularUtils.java
+* @desc		: string regular expression 
+* @author	: ytkim
 *-----------------------------------------------------------------------------
   DATE			AUTHOR			DESCRIPTION
 *-----------------------------------------------------------------------------
-* 2020. 3. 17. 			ytkim			최초작성
+*2020. 3. 17 			ytkim			최초작성
 
 *-----------------------------------------------------------------------------
  */
@@ -24,12 +22,10 @@ public final class StringRegularUtils {
 	private static String ALLTRIM = "\\s";
 	
 	/**
-	 * 
-	 * @Method Name  : removeBlank
-	 * @Method 설명 : text remove blank space
-	 * @작성자   : ytkim
-	 * @작성일   : 2020. 3. 17. 
-	 * @변경이력  :
+	 * @method  : removeBlank
+	 * @desc : text remove blank space
+	 * @author   : ytkim
+	 * @date   : 2020. 3. 17
 	 * @param str
 	 * @return
 	 */
@@ -38,12 +34,10 @@ public final class StringRegularUtils {
 	}
 	
 	/**
-	 * 
-	 * @Method Name  : removeBlank
-	 * @Method 설명 :text remove blank space
-	 * @작성자   : ytkim
-	 * @작성일   : 2020. 3. 17. 
-	 * @변경이력  :
+	 * @method  : removeBlank
+	 * @desc : text remove blank space
+	 * @author   : ytkim
+	 * @date   : 2022. 1. 23. 
 	 * @param str
 	 * @param multiSpaceLineSeparator
 	 * @return
@@ -53,12 +47,10 @@ public final class StringRegularUtils {
 	}
 	
 	/**
-	 * 
-	 * @Method Name  : ltrim
-	 * @Method 설명 : left trim
-	 * @작성자   : ytkim
-	 * @작성일   : 2020. 3. 17. 
-	 * @변경이력  :
+	 * @method  : ltrim
+	 * @desc : left trim
+	 * @author   : ytkim
+	 * @date   : 2022. 1. 23. 
 	 * @param str
 	 * @return
 	 */
@@ -67,12 +59,10 @@ public final class StringRegularUtils {
 	}
 	
 	/**
-	 * 
-	 * @Method Name  : rtrim
-	 * @Method 설명 : right trim
-	 * @작성자   : ytkim
-	 * @작성일   : 2020. 3. 17. 
-	 * @변경이력  :
+	 * @method  : rtrim
+	 * @desc : right trim
+	 * @author   : ytkim
+	 * @date   : 2022. 1. 23. 
 	 * @param str
 	 * @return
 	 */
@@ -81,12 +71,10 @@ public final class StringRegularUtils {
 	}
 	
 	/**
-	 * 
-	 * @Method Name  : trim
-	 * @Method 설명 : left , right trim
-	 * @작성자   : ytkim
-	 * @작성일   : 2020. 3. 17. 
-	 * @변경이력  :
+	 * @method  : trim
+	 * @desc : left , right trim
+	 * @author   : ytkim
+	 * @date   : 2022. 1. 23. 
 	 * @param str
 	 * @return
 	 */
