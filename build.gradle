@@ -10,12 +10,15 @@ plugins {
     // Apply the java-library plugin to add support for Java Library
     id 'java'
     id 'eclipse'
+    id 'java-library'
+    id 'maven-publish'
+    id 'signing'
 }
 
 repositories {
     // Use jcenter for resolving dependencies.
     // You can declare any Maven/Ivy/file repository here.
-    jcenter()
+    mavenCentral()
 }
 
 sourceCompatibility = 1.8
@@ -92,10 +95,17 @@ eclipse { // 이클립스 project facets설정.
 // JAVA file compile charset
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
+def projectName ='varsql-token-converter'
+def projectDesc ='Java Token Converter'
+def projectGroupId ='com.varsql'
+def projectVersion ='0.0.1'
+def releasesDomain=project.VARSQL_TOKEN_RELEASES_URL
+def releasesId=project.VARSQL_TOKEN_RELEASES_ID
+def releasesPW=project.VARSQL_TOKEN_RELEASES_PW
 
 jar{
-	baseName ='varsql-token-converter'
-	version = '1.0.0'
+	archiveBaseName = projectName
+	archiveVersion = projectVersion
 	
 	from ('src/main/java'){
 		include '**/*.xml'
@@ -104,4 +114,85 @@ jar{
 	doLast {
 		println("jar export path : " + archivePath.parent)
 	}
+}
+
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
+publishing  {
+    publications {
+        mavenJava(MavenPublication) {
+            afterEvaluate {
+                groupId = projectGroupId
+                artifactId = projectName
+                version = projectVersion
+                from components.java
+            }
+            /*
+            versionMapping {
+                usage('java-api') {
+                    fromResolutionOf('runtimeClasspath')
+                }
+                usage('java-runtime') {
+                    fromResolutionResult()
+                }
+            }
+            */
+            pom {
+                name = projectName
+                description = projectDesc
+                url = 'https://github.com/varsqlinfo/varsql-token-converter'
+                
+                licenses {
+                    license {
+                        name = 'The Apache License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id = releasesId
+                        name = 'ytkim'
+                        email = 'varsqlinfo@gmail.com'
+                    }
+                }
+                scm {
+                    connection = 'scm:git:git://github.com/varsqlinfo/varsql-token-converter.git'
+                    developerConnection = 'scm:git:ssh://github.com/varsqlinfo/varsql-token-converter.git'
+                    url = 'https://github.com/varsqlinfo/varsql-token-converter'
+                }
+            }
+        }
+    }
+    repositories {
+        maven {
+            name = "sonatype"
+            url ="https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+            //url = "https://oss.sonatype.org/content/repositories/releases"
+
+            credentials(PasswordCredentials) {
+                username = releasesId
+                password = releasesPW
+            }
+        }
+    }
+}
+
+signing {
+    publishing.publications.all { publication ->
+        sign publication
+    }
+}
+
+javadoc {
+    options.tags = [ "fileName:a:head","desc:a:head" ,"date" ,"method"] // custom tag 
+    options.addStringOption("locale","ko_KR");
+    options.addStringOption("encoding","UTF-8");
+    options.addStringOption("charset","UTF-8");
+    options.addStringOption("docencoding","UTF-8");
+    if(JavaVersion.current().isJava9Compatible()) {
+        options.addBooleanOption('html5', true)
+    }
 }
