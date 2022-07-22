@@ -2,7 +2,7 @@
 test query 
  */
 SELECT
-	EMPNO
+	EMPNO ---awefawefawef
 	,ENAME	/* name */
 	-- , test
 FROM EMP
