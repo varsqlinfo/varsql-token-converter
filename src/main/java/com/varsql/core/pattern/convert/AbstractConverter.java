@@ -41,7 +41,6 @@ public abstract class AbstractConverter implements Converter {
 
 	@Override
 	public ConvertResult transform(String cont, TokenHandler handler, TokenInfo... tokens) {
-		cont = cont + System.lineSeparator();
 		final StringBuilder dest = new StringBuilder();
 		final Stack<TokenInfo> states = new Stack<>();
 
@@ -123,8 +122,6 @@ public abstract class AbstractConverter implements Converter {
 	@Override
 	public ConvertResult tokenData(String cont, TokenHandler handler, TokenInfo... tokens) {
 	    final StringBuilder dest = new StringBuilder();
-
-	    cont = cont + System.lineSeparator();
 		final Stack<TokenInfo> states = new Stack<>();
 
 		int startIdx = -1;

@@ -10,7 +10,7 @@ import com.varsql.core.test.BaseTest;
 
 public class SQLCommentRemoveConvertTest extends BaseTest{
 	
-	private boolean allLogView = false; 
+	private boolean allLogView = true; 
 	DBType logViewType = null;//DBType.ORACLE;
 	@Test
 	public void testORACLE() {
@@ -75,12 +75,13 @@ public class SQLCommentRemoveConvertTest extends BaseTest{
 	}
 	
 	
-	private void viewResult(String result, DBType property) {
+	private void viewResult(String result, DBType dbType) {
 		
+		System.out.println("################ dbType : "+ dbType.getDbVenderName());
 		if(allLogView) {
 			System.out.println(result);
 		}else {
-			if(property.equals(logViewType)) {
+			if(dbType.equals(logViewType)) {
 				System.out.println(result);
 			}
 		}

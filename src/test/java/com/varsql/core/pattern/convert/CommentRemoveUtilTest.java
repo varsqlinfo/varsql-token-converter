@@ -11,7 +11,7 @@ import com.varsql.core.test.BaseTest;
 
 public class CommentRemoveUtilTest extends BaseTest{
 	
-	private boolean allLogView = false; 
+	private boolean allLogView = true; 
 	CommentRemoveConverter.CommentType logViewType = null;//CommentRemoveUtil.CommentType.JAVASCRIPT;
 	@Test
 	public void testJAVA() {
@@ -94,12 +94,14 @@ public class CommentRemoveUtilTest extends BaseTest{
 		assertNotEquals(result.indexOf("#"), -10);
 	}
 	
-	private void viewResult(String result, CommentType property) {
+	private void viewResult(String result, CommentType type) {
+		
+		System.out.println("################ comment type : "+ type.name());
 		
 		if(allLogView) {
 			System.out.println(result);
 		}else {
-			if(property.equals(logViewType)) {
+			if(type.equals(logViewType)) {
 				System.out.println(result);
 			}
 		}

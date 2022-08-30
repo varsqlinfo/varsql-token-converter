@@ -14,8 +14,14 @@ public class BaseTest {
             br = new BufferedReader(new FileReader(new File(getClass().getResource(filePath).getFile())));
             String line = null;
             
+            boolean firstFlag = true; 
+            
             while ((line = br.readLine()) != null) {
-                sb.append(line).append(System.lineSeparator());
+            	if(!firstFlag) {
+            		sb.append(System.lineSeparator());
+            	}
+            	firstFlag = false; 
+                sb.append(line);
             }
         } catch (IOException ioe) {
             System.out.println(ioe.getMessage());
