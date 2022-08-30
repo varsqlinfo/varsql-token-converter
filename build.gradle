@@ -21,6 +21,14 @@ repositories {
     mavenCentral()
 }
 
+def projectName ='varsql-token-converter'
+def projectDesc ='Java Token Converter'
+def projectGroupId ='com.varsql'
+def projectVersion ='0.0.2'
+def releasesDomain=project.VARSQL_TOKEN_RELEASES_URL
+def releasesId=project.VARSQL_TOKEN_RELEASES_ID
+def releasesPW=project.VARSQL_TOKEN_RELEASES_PW
+
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
@@ -94,14 +102,6 @@ eclipse { // 이클립스 project facets설정.
 
 // JAVA file compile charset
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
-
-def projectName ='varsql-token-converter'
-def projectDesc ='Java Token Converter'
-def projectGroupId ='com.varsql'
-def projectVersion ='0.0.1'
-def releasesDomain=project.VARSQL_TOKEN_RELEASES_URL
-def releasesId=project.VARSQL_TOKEN_RELEASES_ID
-def releasesPW=project.VARSQL_TOKEN_RELEASES_PW
 
 jar{
 	archiveBaseName = projectName
@@ -181,6 +181,8 @@ publishing  {
 }
 
 signing {
+	useGpgCmd()
+
     publishing.publications.all { publication ->
         sign publication
     }
