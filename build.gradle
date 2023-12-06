@@ -24,10 +24,7 @@ repositories {
 def projectName ='varsql-token-converter'
 def projectDesc ='Java Token Converter'
 def projectGroupId ='com.varsql'
-def projectVersion ='0.0.2'
-def releasesDomain=project.VARSQL_TOKEN_RELEASES_URL
-def releasesId=project.VARSQL_TOKEN_RELEASES_ID
-def releasesPW=project.VARSQL_TOKEN_RELEASES_PW
+def projectVersion ='0.0.3'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -122,6 +119,9 @@ java {
 }
 
 publishing  {
+	def releasesDomain=project.VARSQL_TOKEN_RELEASES_URL
+	def releasesId=project.VARSQL_TOKEN_RELEASES_ID
+	def releasesPW=project.VARSQL_TOKEN_RELEASES_PW
     publications {
         mavenJava(MavenPublication) {
             afterEvaluate {
@@ -181,11 +181,15 @@ publishing  {
 }
 
 signing {
-	useGpgCmd()
+	//useGpgCmd()
 
+    sign publishing.publications.mavenJava
+
+    /*
     publishing.publications.all { publication ->
         sign publication
     }
+    */
 }
 
 javadoc {

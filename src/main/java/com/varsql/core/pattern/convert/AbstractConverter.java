@@ -76,6 +76,7 @@ public abstract class AbstractConverter implements Converter {
 						states.push(startPattern);
 						startIdx = index;
 					}
+					index -= 1;
 				} else {
 					dest.append(c1);
 				}
@@ -160,6 +161,7 @@ public abstract class AbstractConverter implements Converter {
 						states.push(startPattern);
 						startIdx = index;
 					}
+					index -= 1;
 				}else {
 					dest.append(c1);
 				}
